@@ -1,13 +1,23 @@
-
 #!/bin/bash
 
 # Linux Server Hardening
 # Automated Security Audit - RHEL 9
 
+LOG_DIR="$(dirname "$0")/../logs"
+mkdir -p "$LOG_DIR"
+
+LOG_FILE="$LOG_DIR/security-audit-$(date +%Y%m%d-%H%M%S).log"
+
+# Display results and save them in the log file
+exec > >(tee "$LOG_FILE") 2>&1
+
 echo "=========================================="
 echo "       LINUX SECURITY AUDIT"
 echo "       Red Hat Enterprise Linux 9"
 echo "=========================================="
+
+echo ""
+echo "Audit date: $(date)"
 
 echo ""
 echo "[1] OPERATING SYSTEM"
@@ -45,3 +55,6 @@ echo ""
 echo "=========================================="
 echo "          AUDIT COMPLETED"
 echo "=========================================="
+
+echo ""
+echo "Log saved to: $LOG_FILE"
