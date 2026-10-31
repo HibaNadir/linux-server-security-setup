@@ -1,0 +1,21 @@
+# Sensitive files
+*.tar
+*.tar.gz
+*.backup
+*.pem
+*.key
+.env
+.env.*
+
+# Logs
+*.log
+logs/*
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Python cache
+__pycache__/
+*.pyc
