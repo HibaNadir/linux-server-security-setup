@@ -76,6 +76,36 @@ The project was conducted in a controlled virtual lab environment for educationa
 - Verified the firewall, SELinux and system service status.
 - Confirmed that no failed systemd units remained during the final audit.
 
+### 8. Automated Security Audit
+
+Developed a Bash script to automate security verification on the RHEL 9 server.
+
+**Security checks performed:**
+- SELinux enforcement status.
+- Firewall service status.
+- SSH security configuration.
+- Essential system services status.
+- Failed systemd units.
+
+**Automation features:**
+- Automatic security check counting.
+- PASS/WARNING overall audit result.
+- Timestamped audit logs.
+- Automatic HTML security report generation.
+- Dynamic status indicators in the HTML report.
+
+**Execution:**
+
+```bash
+bash scripts/security-audit.sh
+```
+
+**Generated files:**
+- `logs/`: Timestamped audit logs.
+- `reports/`: HTML security audit reports.
+
+Generated logs and HTML reports are excluded from Git using `.gitignore` to avoid publishing machine-specific audit information.
+
 ## Project Screenshots
 
 The following screenshots provide evidence of the implemented security configurations.
@@ -96,11 +126,11 @@ The following screenshots provide evidence of the implemented security configura
 ![Final Security Audit](screenshots/05-final-audit.png)
 
 ## Project Structure
-
-```text
+```
 linux-server-security-setup/
 │
 ├── configs/
+│
 ├── docs/
 │   ├── firewall-hardening.md
 │   ├── selinux-hardening.md
@@ -109,8 +139,12 @@ linux-server-security-setup/
 │   ├── update-and-final-audit.md
 │   └── user-management.md
 │
-├── logs/
+├── logs/                       # Generated audit logs (ignored by Git)
+├── reports/                    # Generated HTML reports (ignored by Git)
+│
 ├── scripts/
+│   └── security-audit.sh
+│
 ├── screenshots/
 │   ├── 01-system-audit.png
 │   ├── 02-ssh-hardening.png
@@ -119,9 +153,9 @@ linux-server-security-setup/
 │   └── 05-final-audit.png
 │
 ├── .gitignore
+├── PROJECT_REPORT.md
 └── README.md
 ```
-
 ## Skills Demonstrated
 
 - Linux System Administration
@@ -137,11 +171,11 @@ linux-server-security-setup/
 
 ## Future Improvements
 
+- Extend the automated security audit with additional checks for open ports, system updates, and file permissions.
 - Configure and test SSH key-based authentication.
-- Disable SSH password authentication after validating key-based access.
-- Develop automated security audit scripts.
-- Implement centralized log monitoring.
-- Explore intrusion detection and security monitoring tools.
+- Disable SSH password authentication after successfully validating key-based access.
+- Implement centralized log monitoring and analysis.
+- Explore intrusion detection and security monitoring tools to improve threat visibility.
 
 ## Disclaimer
 
